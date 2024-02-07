@@ -1,0 +1,43 @@
+<form id="edit_form" class="form_add_edit">
+    <div>
+        <label for="full_name">Full Name: <span>{{editUser.name}}</span></label>
+        <input type="text" name="full_name" id="full_name">
+    </div>
+    <div>
+        <label for="email">Email: <span>{{editUser.email}}</span></label>
+        <input type="text" name="email" id="email">
+    </div>
+    <div>
+        <label for="phone">Phone: <span>{{editUser.phone}}</span></label>
+        <input type="number" min="0" pattern="[0-9]{11}" name="phone" id="phone">
+    </div>
+    <div>
+        <label for="role">Role: <span>{{editUser.role}}</span></label>
+        <select name="role" id="role">
+            <option value="">--Choose--</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+    </div>
+    <div class="divider_down "></div>
+    <b class="pb-4 block">Information Address</b>
+    <div>
+        <label for="street">Street: <span>{{editUser.address.street}}</span></label>
+        <input type="text" name="street" id="street">
+    </div>
+    <div>
+        <label for="district">District: <span>{{editUser.address.district}}</span></label>
+        <input type="text" name="district" id="district">
+    </div>
+    <div>
+        <label for="city">City: <span>{{editUser.address.city}}</span></label>
+        <input type="text" name="city" id="city">
+    </div>
+    <div>
+        <label for="gps">GPS: <span>{{editUser.address.gps}}</span></label>
+        <input type="text" name="gps" id="gps">
+    </div>
+    <div class="divider_down "></div>
+
+    <button type="button" (click)="handleEdit()" class="bg-[#4b0082] text-white rounded-lg">Edit User</button>
+</form>

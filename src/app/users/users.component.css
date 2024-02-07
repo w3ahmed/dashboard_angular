@@ -1,0 +1,12 @@
+.filter_box select *{
+    padding: 1rem;
+}
+.add_edit{
+    width: 100%;
+    background-color: white;
+}
+.add_edit .heading{
+    font-size: x-large;
+    display: inline-block;
+}
+

@@ -1,0 +1,60 @@
+<div class="w-full m-auto">
+    <div *ngIf="!openAdd && !openEdit" class="filter_table">
+        <div class="mb-5 flex flex-nowrap justify-between">
+            <div class="w-10/12 text-nowrap filter_box">
+                <select id="" (change)="changeFilterType($event)" class="border h-full p-2 align-bottom rounded-s-lg ">
+                    <option value="title">Title</option>
+                    <option value="brand">Brand</option>
+                    <option value="category">Category</option>
+                </select>
+                <input type="text" (keyup)="filterUser($event)" placeholder="Filter By Name" class="w-10/12 border p-2 rounded-e-lg">
+            </div>
+            <button (click)="open('add')" class="py-2 px-4 bg-green-500 text-white rounded-md">Add</button>
+        </div>
+        <button (click)="getProducts()">show-data</button>
+        <div class="wrap_table overflow-auto">
+            <table class="w-full border-2">
+                <thead class="border-b-2 font-bold font-serif">
+                    <td>Image</td>
+                    <td>Title</td>
+                    <td>Brand</td>
+                    <td>Category</td>
+                    <td>Actions</td>
+                </thead>
+            
+                <tbody class="">
+                    <tr *ngFor="let product of filterData">
+                        <td>
+                            <img [src]="'/assets/images/'+product.main_image" alt="">
+                        </td>
+                        <td>{{product.title}}</td>
+                        <td>{{product.brand}}</td>
+                        <td>{{product.category}}</td>
+                        <td class="text-nowrap">
+                            <button (click)="open('edit', product)">
+                                <span class="material-symbols-outlined"> edit_square </span>
+                            </button>
+                            <button>
+                                <span class="material-symbols-outlined" (click)="handleDelete(product.id)"> delete </span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="openAdd" class="add_edit">
+        <div class="flex justify-between py-2">
+            <span class="heading">Add New Product</span>
+            <button (click)="open('add')" class="material-symbols-outlined">close</button>
+        </div>
+        <app-add-product [setting]="setting"></app-add-product>
+    </div>
+    <div *ngIf="openEdit" class="add_edit">
+        <div class="flex flex-nowrap justify-between py-2">
+            <span class="heading">Edit Product</span>
+            <button (click)="open('edit')" class="material-symbols-outlined">close</button>
+        </div>
+        <app-edit-product [editProduct]="editProduct"></app-edit-product>
+    </div>
+</div>

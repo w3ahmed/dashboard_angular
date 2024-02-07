@@ -1,0 +1,23 @@
+<form id="add_form" class="form_add_edit">
+    <div>
+        <label for="full_name">Full Name</label>
+        <input type="text" name="full_name" id="full_name">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+    </div>
+    <div>
+        <label for="phone">Phone</label>
+        <input type="number" min="0" pattern="[0-9]{11}" name="phone" id="phone">
+    </div>
+    <div>
+        <label for="role">Role</label>
+        <select name="role" id="role">
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+    </div>
+    <div class="divider_down"></div>
+    <button type="button" (click)="addUser()" class="bg-[#4b0082] text-white rounded-lg">Add User</button>
+</form>

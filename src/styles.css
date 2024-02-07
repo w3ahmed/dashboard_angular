@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+td{
+    padding: 10px;
+}
+tbody td {
+    border-bottom: 1px solid lightgray;
+}
+tbody tr:hover{
+    background-color: whitesmoke;
+}
+tbody td button span{
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #711fad;
+    color: white;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+tbody td button:last-child span{
+    background-color: crimson;
+}
+.divider_down{
+    border-bottom: 1px solid lightgray;
+    margin: 2rem 0;
+}
+.form_add_edit  *:not(div,b, span,.btn_opt button){
+    display: block;
+    padding: .5rem 0;
+}
+.form_add_edit span{
+    display: inline-block;
+    padding: .2rem .5rem;
+    margin: .2rem 0;
+    background-color: lightgray;
+    border-radius: .5rem;
+}
+.form_add_edit *:not(div, label, b, span){
+    border: 1px solid lightgray;
+    padding: .5rem;
+}
+.btn_opt button{
+    display: inline-block;
+}

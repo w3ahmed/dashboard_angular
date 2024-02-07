@@ -1,0 +1,72 @@
+<form id="add_form" class="form_add_edit">
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="main_img">Upload Main Image</label>
+        <input type="file" name="main_img" id="main_img" style="display:none">
+    </div>
+    <div>
+        <label for="images">Upload Other Images</label>
+        <input type="file" name="images" id="images" multiple style="display:none">
+    </div>
+    <div>
+        <label for="brands">Brands</label>
+        <select name="brands" id="brands" style="text-transform: capitalize;">
+            <option *ngFor="let brand of setting.brands" [value]="brand.id" style="text-transform: capitalize;">{{brand.name}}</option>
+        </select>
+    </div>
+    <div>
+        <label for="category">Category</label>
+        <select (change)="filterProps($event)" name="category" id="category" style="text-transform: capitalize;">
+            <option value="">--Select Category--</option>
+            <option *ngFor="let category of setting.category" [value]="category.id" style="text-transform: capitalize;">{{category.name}}</option>
+        </select>
+    </div>
+
+    <div *ngIf="category">
+        <input type="number" (change)="addOtion($event)">
+        
+        <div class="flex flex-wrap">
+            <div class="w-full btn_opt">
+                <button *ngFor="let opt of optCount" type="button" (click)="activeOpt(opt)"> option {{opt}} </button>
+            </div>
+
+            <div *ngFor="let opt of optCount">
+                <div [style]="optActive === opt ? 'display:block;':'display:none;'"> 
+                    I am Active {{optActive}}
+
+                    <div *ngFor="let prop of props">
+                        <label [for]="'prop-'+prop.name+indexOpt">{{prop.value}}</label>
+                        <select name="props" [id]="'prop-'+prop.name+indexOpt">
+                            <option [value]="opt.id" *ngFor="let opt of prop.options">{{opt.value}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Colors</label>
+                        <div *ngFor="let color of setting.colors" class="inline-block p-4 text-center">
+                            <label [for]="color.id+opt">{{color.name}}</label>
+                            <input type="checkbox" [name]="'colors-opt-'+opt" [value]="color.id" [id]="color.id+opt">
+                        </div>
+                    </div>
+                    <div>
+                        <label [for]="'price'+opt">Price</label>
+                        <input type="number" [name]="'price-opt-'+opt" [id]="'price'+opt">
+                    </div>
+                    <div>
+                        <label [for]="'quantity'+opt">Quantity</label>
+                        <input type="number" [name]="'quantity-opt-'+opt" [id]="'quantity'+opt">
+                    </div>
+                    <div>
+                        <label [for]="'value'+opt">Value</label>
+                        <textarea [name]="'value-opt-'+opt" [id]="'value'+opt"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" (click)="addProduct()">Add product</button>
+
+</form>

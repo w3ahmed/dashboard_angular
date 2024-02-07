@@ -1,0 +1,58 @@
+<div class="w-full m-auto">
+    <div *ngIf="!openAdd && !openEdit" class="filter_table">
+        <div class="mb-5 flex flex-nowrap justify-between">
+            <div class="w-10/12 text-nowrap filter_box">
+                <select id="" (change)="changeFilterType($event)" class="border h-full p-2 align-bottom rounded-s-lg ">
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                    <option value="role">Role</option>
+                    <option value="phone">Phone</option>
+                </select>
+                <input type="text" (keyup)="filterUser($event)" placeholder="Filter By Name" class="w-10/12 border p-2 rounded-e-lg">
+            </div>
+            <button (click)="open('add')" class="py-2 px-4 bg-green-500 text-white rounded-md">Add</button>
+        </div>
+        <div class="wrap_table overflow-auto">
+            <table class="w-full border-2">
+                <thead class="border-b-2 font-bold font-serif">
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Role</td>
+                    <td>Phone</td>
+                    <td>Actions</td>
+                </thead>
+            
+                <tbody class="">
+                    <tr *ngFor="let user of filterData">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td [style]="user.role === 'admin' ? 'color:red':'color:black'">{{user.role}}</td>
+                        <td>{{user.phone}}</td>
+                        <td class="text-nowrap">
+                            <button (click)="open('edit', user)">
+                                <span class="material-symbols-outlined"> edit_square </span>
+                            </button>
+                            <button>
+                                <span class="material-symbols-outlined" (click)="handleDelete(user.id)"> delete </span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="openAdd" class="add_edit">
+        <div class="flex justify-between py-2">
+            <span class="heading">Add New User</span>
+            <button (click)="open('add')" class="material-symbols-outlined">close</button>
+        </div>
+        <app-add-user></app-add-user>
+    </div>
+    <div *ngIf="openEdit" class="add_edit">
+        <div class="flex flex-nowrap justify-between py-2">
+            <span class="heading">Edit User</span>
+            <button (click)="open('edit')" class="material-symbols-outlined">close</button>
+        </div>
+        <app-edit-user [editUser]="editUser"></app-edit-user>
+    </div>
+</div>

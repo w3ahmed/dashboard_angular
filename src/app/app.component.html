@@ -1,0 +1,33 @@
+<div class="flex">
+  <div class="wrap_nav min-h-screen relative">
+    <nav class="h-full sticky top-4 text-gray-100">
+      <ul>
+        <li>
+          <a routerLink="/" routerLik="active" class="material-symbols-outlined text-2xl">home</a>
+          <span class="label">Dashboard</span>
+        </li>
+        <li>
+          <a routerLink="/products" routerLinkActive="active" class="material-symbols-outlined text-2xl">shoppingmode</a>
+          <span class="label">Products</span>
+        </li>
+        <li>
+          <a routerLink="/users" routerLinkActive="active" class="material-symbols-outlined text-2xl">shopping_bag</a>
+          <span class="label">Orders</span>
+        </li>
+        <li>
+          <a routerLink="/users" routerLinkActive="active" class="material-symbols-outlined text-2xl icon">group</a>
+          <span class="label">Users</span>
+        </li>
+        <li class="top-[50vh]">
+          <a class="material-symbols-outlined text-2xl">logout</a>
+          <span class="label whitespace-nowrap">Log Out</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="out_page">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
